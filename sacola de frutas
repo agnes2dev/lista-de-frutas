@@ -1,0 +1,198 @@
+
+frutas = []
+
+def menu():
+    while True:
+        
+        print("------" *10)
+        print()
+        print("Olá. Bem vindo à cesta de compras! \n")
+        print("Opções:\n")
+
+        print("1- Ver lista de compras \n")
+        print("2- Adicionar um novo item\n")
+        print("3- Remover itens da lista\n")
+        print("4- Verificar itens da lista \n")
+        print("5- Alterar itens da lista\n")
+        print("6- Sair")
+
+
+        try:
+
+            opcao = int(input("\n Digite uma opção:  "))
+
+            print()
+            print("------" *10)
+                 
+            if opcao == 1:
+                ver_sacola()
+                    
+            elif opcao == 2:
+                adicionar()
+                
+            elif opcao == 3:
+                remover()
+                
+            elif opcao == 4:
+                print("Em construção")
+                
+            elif opcao == 5:
+                print("Em construção")
+                
+            elif opcao == 6:
+                print("Volte sempre!")
+                sair()
+
+            else:
+                print("Opção inválida. Tente novamente.")
+                return
+                
+        except ValueError:
+            print("Valor inválido. Tente novamente.")
+            break
+        
+def sair():
+    print("Até a próxima!")
+    exit()
+
+    
+def ver_sacola():
+    while True:
+        print("------" *10)
+        print()
+            
+        print("Bem vindo a sacola de compras!")
+        print(frutas if frutas else "No momento, a sua sacola está vazia")
+
+        print()
+        print("------" *10)
+
+
+        print_opcoes()
+
+        opcao_escolhida()
+        
+        print()
+        print("------" *10)
+
+
+
+      
+    
+def adicionar():
+    while True:
+        print("------" *10)
+        print()
+
+        # conferindo a sacola
+        print("Sacola de compras")
+        
+        print("\nItens na sacola:", frutas)
+        print()
+        print("------" *10)
+
+        # adicionando fruta
+
+        print("------" *10)
+        print()
+
+        print("Adicionar itens à sacola\n")
+        fruta_nova = str(input("Digite aqui uma nova fruta a ser adicionada:  "))
+        frutas.append(fruta_nova)
+        print(f"\nO item {fruta_nova} foi adicionado com sucesso.")
+
+
+        try:
+            
+            print("Deseja adicionar outra fruta? \n 1- Não | 2- Sim")
+            decisao = str(input("Digite a opção:  "))
+
+            if decisao == "não" or decisao == "NAO" or decisao == "nao" or decisao == "1":
+                menu()
+            
+            elif decisao == "sim" or decisao == "SIM" or decisao == "2":
+                adicionar()
+                
+            else:
+                print("Opção indisponível.")
+                return
+                
+        except ValueError:
+            print("Erro inesperado. Tente novamente")
+            break
+
+def remover():
+    while True:
+        print("------" *10)
+        print()
+        print(frutas)
+
+        try:
+            
+            print("Qual fruta gostaria de remover?")
+            fruta_removida = str(input("Digite sua opção:"))
+
+            if fruta_removida in frutas:
+                frutas.remove(fruta_removida)
+                print(f"A fruta {fruta_removida} foi removida com sucesso")
+
+            elif fruta_removida not in frutas:
+                print(f"Erro. A fruta ""{fruta_removida}"" não existe na lista de compras. Tente novamente.")
+                return
+                                    
+            else:
+                print(f"Erro. A fruta ""{fruta_removida}"" não pôde ser removida. Verifique a grafia e tente novamente.")
+                return
+            
+        except ValueError:
+            print("Erro. Opção não disponível")
+            return
+
+        print_opcoes()
+
+        opcao_escolhida()
+        
+def print_opcoes():
+    
+        print("------" *10)
+        print()
+        print("Opções:\n")
+
+        print("1- Ver lista de compras \n")
+        print("2- Adicionar um novo item\n")
+        print("3- Remover itens da lista\n")
+        print("4- Verificar itens da lista \n")
+        print("5- Alterar itens da lista\n")
+        print("6- Voltar para o menu\n")
+        print("7- Sair")
+        
+def opcao_escolhida():
+    try:
+
+        opcao = int(input("\nDigite aqui uma opção:  "))
+        
+        if opcao == 1:
+            ver_sacola()
+                    
+        elif opcao == 2:
+           adicionar()
+                
+        elif opcao == 3:
+            remover()
+                
+        elif opcao == 4:
+            print("Em construção")
+                
+        elif opcao == 5:
+            print("Em construção")
+        elif opcao == 6:
+            menu()
+        elif opcao == 7:
+            print("Volte sempre!")
+            sair()
+        else:
+            print("Opção não disponível. Tente outra opção.")
+            return
+    except ValueError:
+        print("Número inválido. Tente novamente.")
+        return
